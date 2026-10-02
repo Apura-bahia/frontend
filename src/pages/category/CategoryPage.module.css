@@ -1,0 +1,188 @@
+/* Estrutura Base */
+.page {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem 1.5rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.breadcrumb a {
+    color: #555;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #0056b3; /* Azul do hover */
+}
+
+.breadcrumb__separator {
+    color: #999;
+}
+
+.breadcrumb__current {
+    color: #111;
+}
+
+/* Cabeçalho */
+.header {
+    margin-bottom: 3rem;
+}
+
+.header__title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 1rem 0;
+}
+
+.header__description {
+    font-size: 1.15rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 900px;
+}
+
+/* ==========================================================================
+   TIMELINE (Linha do Tempo)
+   ========================================================================== */
+.timeline {
+    position: relative;
+    margin-left: 90px; /* Cria o espaço à esquerda para as horas */
+    border-left: 1px solid #dcdcdc; /* A linha vertical cinza clara */
+    padding-bottom: 1rem;
+}
+
+.timeline__item {
+    position: relative;
+    padding-left: 2rem; /* Afasta o cartão da linha vertical */
+    margin-bottom: 2.5rem;
+}
+
+.timeline__time {
+    position: absolute;
+    left: -75px; /* Empurra a hora para trás da linha */
+    top: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #555;
+}
+
+.timeline__dot {
+    position: absolute;
+    left: -4.5px; /* Centraliza a bolinha exatamente em cima da linha de 1px */
+    top: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #0056b3; /* Azul padrão */
+}
+
+/* ==========================================================================
+   CARTÃO DA NOTÍCIA (Horizontal)
+   ========================================================================== */
+.card {
+    display: flex;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    align-items: flex-start;
+}
+
+.card:hover .card__title {
+    color: #0056b3; /* Título fica azul ao passar o rato */
+}
+
+.card:hover .card__image {
+    opacity: 0.9;
+}
+
+.card__image {
+    width: 340px; /* Largura fixa da imagem */
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+.card__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.card__kicker {
+    color: #0056b3;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.card__title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 0.75rem 0;
+    color: #111;
+    transition: color 0.2s ease;
+}
+
+.card__subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    
+    /* Corta com "..." se o resumo for muito longo (máximo 3 linhas) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Tablets e Telemóveis)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .card {
+        flex-direction: column; /* Empilha a imagem acima do texto */
+        gap: 1rem;
+    }
+    
+    .card__image {
+        width: 100%; /* A imagem passa a ocupar 100% no mobile */
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Esconde a linha do tempo e as horas no telemóvel para poupar espaço de ecrã */
+    .timeline {
+        margin-left: 0;
+        border-left: none;
+    }
+    
+    .timeline__time, 
+    .timeline__dot {
+        display: none; 
+    }
+    
+    .timeline__item {
+        padding-left: 0;
+    }
+
+    .header__title {
+        font-size: 2rem;
+    }
+}

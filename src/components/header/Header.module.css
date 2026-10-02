@@ -1,0 +1,238 @@
+.header__container {
+    width: 100%;    
+    position: relative;
+}
+
+.header__container__first {
+    background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+    width: 100%;    
+    border-bottom: 1px solid var(--color-border);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 5%; /* Substitui o space-around: cria margem lateral consistente */
+    
+    font-size: 16px;
+}
+
+/* Criamos 3 áreas flexíveis para garantir que a logo fique EXATAMENTE no centro */
+.header__left, .header__right {
+    flex: 1;
+    display: flex;
+    align-items: inherit;
+}
+
+.header__right {
+    justify-content: flex-end; /* Empurra a barra de pesquisa para a direita */
+}
+
+.header__center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header__remove__list__style {
+    display: flex;
+    gap: 1.5rem; /* Aumentamos o gap para os ícones respirarem como na imagem */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Efeito sutil ao passar o mouse nos ícones */
+.header__remove__list__style a:hover svg {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.header__container__second {
+    background: var(--color-accent-soft);
+    width: 100%;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__container__second img {
+    display: block;
+    width: min(100%, 200px); /* Reduzido de 512px para 280px */
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* Garante que fica centralizada */
+}
+
+.header__container__second__nav {
+    width: 100%;
+    background: var(--color-surface); /* Fundo sólido para cobrir o conteúdo ao rolar */
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    
+    /* --- MÁGICA DA ANCORAGEM (Sticky) --- */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Garante que fica sempre por cima de tudo */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Sombra elegante ao colar no topo */
+}
+
+.nav__toolbar {
+    display: contents;
+}
+
+.menu__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu__toggle span {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+.menu__toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.header__container__second__list {
+    flex: 1;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: var(--color-accent);
+    
+    gap: 2.5rem; /* O segredo do espaçamento da imagem está aqui (era 0.4rem) */
+    justify-content: center;
+    flex-wrap: wrap; /* Evita quebra de layout em telas menores */
+}
+
+.header__container__second__list li {
+    font-weight: 500; /* Deixa a fonte um pouco mais encorpada */
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header__container__second__list li:hover {
+    opacity: 0.8;
+}
+
+/* Removemos o sublinhado padrão que o <Link> (tag <a>) traz consigo */
+.header__container__second__list a {
+    text-decoration: none;
+    color: inherit; /* Faz o link herdar a cor #E9822B do <li> */
+}
+
+.is__hidden {
+    display: none;
+}
+
+
+/* ... [seu código css anterior continua igual] ... */
+
+/* =========================================
+   RESPONSIVIDADE (Telas menores que 768px)
+========================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Ajustes da barra superior */
+    .header__container__first {
+        flex-direction: column; /* Empilha os elementos */
+        gap: 1.5rem; /* Espaço entre as redes sociais, logo e pesquisa */
+        padding: 1.5rem 1rem;
+    }
+
+    /* Centraliza todas as 3 áreas que antes ficavam lado a lado */
+    .header__left, .header__center, .header__right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Garante que a logo não vaze da tela diminuindo o tamanho máximo */
+    .header__center img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+    }
+
+
+    /* 2. Ajustes da barra de navegação (Menu Swipe) */
+    .header__container__second {
+        padding: 0.8rem 0; /* Remove padding lateral para o scroll encostar na borda da tela */
+    }
+
+    .header__container__second img {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 0.75rem;
+    }
+
+    /* Habilita a rolagem horizontal suave */
+    .header__container__second__nav {
+        width: 100%;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch; /* Deixa o scroll suave no iPhone */
+        padding: 0 1rem; /* Adiciona o respiro interno do scroll */
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav__toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .menu__toggle {
+        display: flex;
+    }
+
+    /* Oculta a barra de rolagem visual para ficar mais bonito (opcional) */
+    .header__container__second__nav::-webkit-scrollbar {
+        display: none;
+    }
+    .header__container__second__nav {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .header__container__second__list {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 0;
+    }
+
+    .header__container__second__list.is__open {
+        display: flex;
+    }
+
+    .header__container__second__list li {
+        padding: 0.75rem 0;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .header__container__second__list li {
+        font-size: 0.9rem;
+        white-space: nowrap; /* Garante que os nomes (ex: ENTRETENIMENTO) não quebrem no meio */
+    }
+}

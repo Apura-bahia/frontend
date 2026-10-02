@@ -1,0 +1,18 @@
+.parceria__container {
+    padding: 1.5rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parceria__img {
+    width: 100%;
+    max-width: 960px;
+    height: 192px;
+    border-radius: var(--radius-medium);
+
+    object-fit: cover;
+    object-position: center;
+}

@@ -1,0 +1,15 @@
+.container__footer {    
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    width: 100%;
+    height: 10vh;
+    
+    background: var(--color-primary);
+    color: var(--color-surface);
+}
+
+.nav__footer {
+    display: flex;
+    gap: 1rem;
+}
