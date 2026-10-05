@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    /* A coluna principal fica com o espaço maior, a lateral fica com um limite seguro */
+    grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr); 
+    gap: clamp(2rem, 4vw, 4rem); 
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 1.5rem; 
+}
+
+/* Proteção contra o "Grid Blowout" */
+.container > * {
+    min-width: 0;
+}
+
+@media (max-width: 960px) {
+    .container {
+        grid-template-columns: 1fr; /* Empilha no telemóvel/tablet */
+        gap: 2.5rem;
+    }
+}

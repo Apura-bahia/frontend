@@ -1,0 +1,33 @@
+.page {
+    width: min(100% - 2rem, 900px);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+}
+
+.header {
+    margin-bottom: var(--space-4);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--space-3);
+}
+
+.eyebrow {
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.header h1 {
+    color: var(--color-primary);
+    font-size: 2rem;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.empty {
+    padding: 2rem 0;
+}

@@ -1,0 +1,260 @@
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL (DUAS COLUNAS)
+   ========================================================================== */
+.page__container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.article__grid {
+    display: grid;
+    /* Coluna principal flexível, barra lateral fixa com 320px */
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* ==========================================================================
+   CABEÇALHO DA NOTÍCIA (Tipografia Jornalística)
+   ========================================================================== */
+.article__kicker {
+    display: block;
+    color: var(--color-accent, #0056b3);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.article__title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 1rem 0;
+}
+
+.article__subtitle {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: #555555;
+    font-weight: 400;
+    margin: 0 0 1.5rem 0;
+}
+
+/* ==========================================================================
+   BARRA DE METADADOS (Autor, Data e Partilha)
+   ========================================================================== */
+.article__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 2rem;
+}
+
+.meta__author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.meta__author img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.meta__date {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* ==========================================================================
+   IMAGEM E CONTEÚDO
+   ========================================================================== */
+.article__image__wrapper {
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+.article__image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 4px;
+    /* Cantos menos arredondados, mais sérios */
+}
+
+.article__caption {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+.article__body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #222222;
+}
+
+.article__body p {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    /* Remove o texto justificado ou centralizado, essencial em webjornalismo */
+}
+
+/* ==========================================================================
+   BARRA LATERAL (Sidebar)
+   ========================================================================== */
+.article__sidebar {
+    position: sticky;
+    /* Faz a barra lateral acompanhar o scroll */
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* ==========================================================================
+   SIDEBAR: ÚLTIMAS NOTÍCIAS
+   ========================================================================== */
+.sidebar__latest {
+    margin-top: 1rem;
+}
+
+.sidebar__latest__title {
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid #0056b3;
+    /* Mantém o azul jornalístico */
+    padding-bottom: 0.5rem;
+    color: #111;
+}
+
+.sidebar__latest__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.sidebar__latest__card {
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    align-items: center;
+}
+
+.sidebar__latest__img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* ==========================================================================
+   BREADCRUMB (Navegação de Topo)
+   ========================================================================== */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    /* Espaço antes do Chapéu */
+}
+
+.breadcrumb a {
+    color: var(--color-accent, #0056b3);
+    /* Azul jornalístico */
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    opacity: 0.8;
+}
+
+.breadcrumb__separator {
+    color: #999;
+    font-size: 0.75rem;
+}
+
+.breadcrumb__current {
+    color: #777;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   CABEÇALHO FULL-WIDTH
+   ========================================================================== */
+.article__header {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* A linha divisória da meta-bar agora cruza 100% da tela */
+.article__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 2rem;
+}
+
+.sidebar__latest__cardTitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+    color: #222;
+    transition: color 0.2s ease;
+
+    /* Corta o texto com "..." se passar de 3 linhas */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sidebar__latest__card:hover .sidebar__latest__cardTitle {
+    color: #0056b3;
+}
+
+.sidebar__latest__card:hover .sidebar__latest__img {
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 960px) {
+    .article__grid {
+        grid-template-columns: 1fr;
+        /* Empilha a barra lateral debaixo do texto no telemóvel */
+        gap: 2rem;
+    }
+
+    .article__meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+
+}

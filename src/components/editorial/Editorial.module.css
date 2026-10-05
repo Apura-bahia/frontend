@@ -1,0 +1,206 @@
+.section {
+    width: 100%;
+    padding: clamp(1.25rem, 3vw, 2.5rem) 1rem;
+    min-height: 50vh;
+    margin: 0 auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================================================
+   2. SISTEMA DE TEMAS (CLARO E ESCURO)
+   ========================================================================== */
+.themeDark {
+    color: #ffffff; 
+    --local-accent: #e67e22; 
+}
+
+.themeLight {
+    color: #222222; 
+    --local-accent: #0056b3; 
+}
+
+/* 3. ESTRUTURA DO GRID */
+.divisor__margin {
+    width: min(100%, 1250px);
+    margin: 0 auto;
+}
+
+.divisor__contents {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(150, 150, 150, 0.3); 
+}
+
+.eyebrow {
+    color: var(--local-accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.heading__link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.heading__link:hover {
+    opacity: 1;
+    color: var(--local-accent); 
+}
+
+/* ==========================================================================
+   4. IMAGENS (Com blindagem anti-quebra)
+   ========================================================================== */
+.divisor__content__img__wrapper {
+    width: 100%;
+    margin: 0;
+    border-radius: var(--radius-medium, 8px);
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.divisor__contents__main__img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+    max-height: 400px;
+}
+
+
+.divisor__contents__second__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+/* ==========================================================================
+   5. TEXTOS E CHAPÉUS (Kickers)
+   ========================================================================== */
+.divisor__contents__main__kicker,
+.divisor__contents__second__kicker {
+    display: block;
+    color: var(--local-accent); 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+
+.divisor__contents__main__kicker {
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.divisor__contents__second__kicker {
+    font-size: 0.75rem;
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+}
+
+.divisor__contents__main__title,
+.divisor__contents__second__title {
+    color: inherit; 
+    font-weight: 800;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+.divisor__contents__main__title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.divisor__contents__second__title {
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+.divisor__contents__main p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: inherit;
+    margin: 0;
+    opacity: 0.85;
+    overflow-wrap: anywhere;
+}
+/* ==========================================================================
+   6. ANIMAÇÕES (HOVER) E GRID SECUNDÁRIO
+   ========================================================================== */
+.divisor__contents__second__grid {
+    display: flex;
+    flex-direction: column; 
+    gap: 1.25rem;
+}
+
+.card__editorial {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.card__editorial:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.card__editorial .divisor__content__img__wrapper {
+    width: 110px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 6px;
+}
+
+.card__editorial > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.divisor__contents__main:hover .divisor__contents__main__title,
+.card__editorial:hover .divisor__contents__second__title {
+    color: var(--local-accent);
+}
+
+.divisor__contents__main:hover .divisor__contents__main__img,
+.card__editorial:hover .divisor__contents__second__img {
+    transform: scale(1.04);
+}
+/* ==========================================================================
+   7. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 900px) {
+    .divisor__contents { grid-template-columns: 1fr; }
+    .divisor__contents__main__img { max-height: none; }
+}
+
+@media (max-width: 520px) {
+    .divisor__contents__main__title { font-size: 1.5rem; }
+    .eyebrow { font-size: 1.25rem; }
+}

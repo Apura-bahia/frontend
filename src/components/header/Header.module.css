@@ -1,0 +1,266 @@
+/* ==========================================================================
+   ESTRUTURA GERAL DO CABEÇALHO (Desktop)
+   ========================================================================== */
+.header__container {
+    width: 100%;
+    position: relative;
+}
+
+/* 1. BARRA SUPERIOR (Data, Clima, Redes Sociais) */
+.header__container__first {
+    background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 5%;
+    font-size: 16px;
+}
+
+.header__left,
+.header__right {
+    flex: 1;
+    display: flex;
+    align-items: inherit;
+}
+
+.header__right {
+    justify-content: flex-end;
+}
+
+.header__center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header__remove__list__style {
+    display: flex;
+    gap: 1.5rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header__remove__list__style a:hover svg {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+/* ==========================================================================
+   ÁREA DA LOGO (Fundo Azul)
+   ========================================================================== */
+.header__container__second {
+    background: #14395b;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+
+.header__container__second img {
+    display: block;
+    width: min(100%, 200px);
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO / MENU (Desktop)
+   ========================================================================== */
+.header__container__second__nav {
+    width: 100%;
+    background: #14395b;
+    padding: 0.75rem 1rem 1.25rem 1rem;
+    display: flex;
+    flex-direction: row; /* Força menu horizontal no PC */
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+}
+
+.nav__toolbar {
+    display: contents; /* Em PC, deixa a barra de pesquisa no fluxo normal */
+}
+
+.header__container__second__list {
+    flex: 1;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #F18825; /* Laranja da marca */
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.header__container__second__list li {
+    width: auto;
+    border: none;
+    padding: 0;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-align: center;
+}
+
+.header__container__second__list li:hover {
+    opacity: 0.8;
+}
+
+.header__container__second__list a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.is__hidden {
+    display: none;
+}
+
+/* BOTÃO HAMBÚRGUER (Oculto no Desktop) */
+.menu__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu__toggle span {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background: #F18825;
+}
+
+.menu__toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.clima__wrapper {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.escondido {
+    opacity: 0;
+    transform: translateY(-8px); /* Desliza um pouquinho para cima antes de desaparecer */
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Tablets e Telemóveis - Telas até 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* 1. Ajustes da barra superior (Focada e minimalista no mobile) */
+    .header__container__first {
+        padding: 0.6rem 1rem; /* Reduz drasticamente o espaço em branco */
+        justify-content: center;
+    }
+
+    .header__left,
+    .header__center {
+        display: none; /* Oculta a data e o clima no telemóvel */
+    }
+
+    .header__right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header__left,
+    .header__center,
+    .header__right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header__center img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+    }
+
+    /* 2. Ajustes da Logo */
+    .header__container__second {
+        padding-top: 1.5rem;
+    }
+
+    .header__container__second img {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 0.75rem;
+    }
+
+    /* 3. Barra de Navegação (Flexbox Vertical) */
+    .header__container__second__nav {
+        flex-direction: column; 
+        align-items: stretch;
+        padding: 0 1rem;
+    }
+
+    /* Toolbar agora coloca o Hambúrguer na Esquerda e a Lupa na Direita */
+    .nav__toolbar {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .menu__toggle {
+        display: flex;
+    }
+
+    /* Oculta scrollbars nativas do telemóvel na barra do menu */
+    .header__container__second__nav::-webkit-scrollbar {
+        display: none;
+    }
+    .header__container__second__nav {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* 4. Lista de Categorias (Gaveta Dropdown) */
+    .header__container__second__list {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        padding: 0 0 1rem 0;
+        margin: 0;
+        gap: 0;
+    }
+
+    .header__container__second__list.is__open {
+        display: flex;
+    }
+
+    .header__container__second__list li {
+        width: 100%;
+        text-align: left; 
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+        display: block;
+    }
+
+    .header__container__second__list li:last-child {
+        border-bottom: none;
+    }
+}
