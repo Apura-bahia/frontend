@@ -6,48 +6,6 @@
     position: relative;
 }
 
-/* 1. BARRA SUPERIOR (Data, Clima, Redes Sociais) */
-.header__container__first {
-    background: color-mix(in srgb, var(--color-surface) 90%, transparent);
-    width: 100%;
-    border-bottom: 1px solid var(--color-border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.2rem 5%;
-    font-size: 16px;
-}
-
-.header__left,
-.header__right {
-    flex: 1;
-    display: flex;
-    align-items: inherit;
-}
-
-.header__right {
-    justify-content: flex-end;
-}
-
-.header__center {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.header__remove__list__style {
-    display: flex;
-    gap: 1.5rem;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.header__remove__list__style a:hover svg {
-    opacity: 0.7;
-    transition: opacity 0.2s;
-}
-
 /* ==========================================================================
    ÁREA DA LOGO (Fundo Azul)
    ========================================================================== */
@@ -77,7 +35,7 @@
     background: #14395b;
     padding: 0.75rem 1rem 1.25rem 1rem;
     display: flex;
-    flex-direction: row; /* Força menu horizontal no PC */
+    flex-direction: row;
     align-items: center;
     position: sticky;
     top: 0;
@@ -86,7 +44,7 @@
 }
 
 .nav__toolbar {
-    display: contents; /* Em PC, deixa a barra de pesquisa no fluxo normal */
+    display: contents; 
 }
 
 .header__container__second__list {
@@ -95,7 +53,7 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    color: #F18825; /* Laranja da marca */
+    color: #F18825; 
     gap: 2.5rem;
     justify-content: center;
     flex-wrap: wrap;
@@ -150,55 +108,12 @@
     outline-offset: 2px;
 }
 
-.clima__wrapper {
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.visivel {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.escondido {
-    opacity: 0;
-    transform: translateY(-8px); /* Desliza um pouquinho para cima antes de desaparecer */
-}
-
 /* ==========================================================================
    RESPONSIVIDADE (Tablets e Telemóveis - Telas até 768px)
    ========================================================================== */
 @media (max-width: 768px) {
 
-    /* 1. Ajustes da barra superior (Focada e minimalista no mobile) */
-    .header__container__first {
-        padding: 0.6rem 1rem; /* Reduz drasticamente o espaço em branco */
-        justify-content: center;
-    }
-
-    .header__left,
-    .header__center {
-        display: none; /* Oculta a data e o clima no telemóvel */
-    }
-
-    .header__right {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .header__left,
-    .header__center,
-    .header__right {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .header__center img {
-        width: 100%;
-        max-width: 220px;
-        height: auto;
-    }
-
-    /* 2. Ajustes da Logo */
+    /* Ajustes da Logo */
     .header__container__second {
         padding-top: 1.5rem;
     }
@@ -209,14 +124,14 @@
         padding: 0 0.75rem;
     }
 
-    /* 3. Barra de Navegação (Flexbox Vertical) */
+    /* Barra de Navegação (Flexbox Vertical) */
     .header__container__second__nav {
         flex-direction: column; 
         align-items: stretch;
         padding: 0 1rem;
     }
 
-    /* Toolbar agora coloca o Hambúrguer na Esquerda e a Lupa na Direita */
+    /* Toolbar com Hambúrguer e Lupa alinhados */
     .nav__toolbar {
         display: flex;
         justify-content: space-between; 
@@ -229,7 +144,7 @@
         display: flex;
     }
 
-    /* Oculta scrollbars nativas do telemóvel na barra do menu */
+    /* Oculta scrollbars nativas no menu mobile */
     .header__container__second__nav::-webkit-scrollbar {
         display: none;
     }
@@ -238,7 +153,7 @@
         scrollbar-width: none;
     }
 
-    /* 4. Lista de Categorias (Gaveta Dropdown) */
+    /* Lista de Categorias (Dropdown) */
     .header__container__second__list {
         width: 100%;
         display: none;

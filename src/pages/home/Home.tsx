@@ -1,7 +1,6 @@
 import { useLoaderData } from "react-router";
 import styles from "./Home.module.css"
 import type Article from "../../interfaces/Article";
-import WebStory from "../../components/webstories/WebStory";
 import Editorial from "../../components/editorial/Editorial";
 import Parceria from "../../components/parceria/Parceria";
 

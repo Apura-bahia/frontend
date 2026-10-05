@@ -1,0 +1,75 @@
+.header__container__first {
+    background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 5%;
+    font-size: 16px;
+}
+
+.header__left,
+.header__right {
+    flex: 1;
+    display: flex;
+    align-items: inherit;
+}
+
+.header__right {
+    justify-content: flex-end;
+}
+
+.header__center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header__remove__list__style {
+    display: flex;
+    gap: 1.5rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header__remove__list__style a:hover svg {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+/* Animação do Clima */
+.clima__wrapper {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.escondido {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Telas até 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header__container__first {
+        padding: 0.6rem 1rem;
+        justify-content: center;
+    }
+
+    .header__left,
+    .header__center {
+        display: none; /* Oculta a data e o clima no telemóvel */
+    }
+
+    .header__right {
+        justify-content: center;
+        width: 100%;
+    }
+}

@@ -17,28 +17,6 @@ const articlesLoader = ({ request }: { request: Request }) => {
     return PostagemController.getPostagens(request?.signal);
 };
 
-const CarregamentoInicial = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', width: '100%', backgroundColor: '#ffffff' }}>
-        <style>
-            {`
-        @keyframes girar { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .spinner-raiz { 
-            width: 48px; 
-            height: 48px; 
-            border: 5px solid rgba(8, 59, 92, 0.15); 
-            border-top-color: #083b5c; 
-            border-radius: 50%; 
-            animation: girar 1s linear infinite; 
-            margin-bottom: 1rem; 
-        }
-      `}
-        </style>
-        <div className="spinner-raiz"></div>
-        <p style={{ fontWeight: 600, color: "#083b5c", fontFamily: 'system-ui, sans-serif' }}>
-            Apurando notícias...
-        </p>
-    </div>
-);
 
 const dashboardLoader = async ({ request }: { request: Request }) => {
     try {
