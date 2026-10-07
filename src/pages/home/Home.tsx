@@ -1,11 +1,26 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigation } from "react-router";
 import styles from "./Home.module.css"
 import type Article from "../../interfaces/Article";
 import Editorial from "../../components/editorial/Editorial";
 import Parceria from "../../components/parceria/Parceria";
+import EditorialSkeleton from "../../components/editorialSkeleton/EditorialSkeleton";
 
 const Home = () => {
     const postagens = useLoaderData() as Article[] | null | undefined;
+    const navigation = useNavigation();
+
+    if (navigation.state === "loading") {
+        return (
+            <main>
+                <section className={`${styles.home__section} ${styles.page}`}>
+                    {/* Simulamos o layout da Home com 3 blocos de esqueletos e a Parceria no meio */}
+                    <EditorialSkeleton />
+                    <EditorialSkeleton />
+                    <EditorialSkeleton />
+                </section>
+            </main>
+        );
+    }
 
     if (!postagens || !Array.isArray(postagens)) {
         return (
@@ -39,7 +54,7 @@ const Home = () => {
             
             <section className={`${styles.home__section} ${styles.page}`}>
 
-  
+
                 <Editorial 
                     articles={postagens.slice(-5).reverse()} 
                     corFundo="transparent"
@@ -97,10 +112,8 @@ const Home = () => {
                     temaEscuro={false}
                     linkCategoria="/politica"
                 />
-            
+                
             </section>            
-
-            
         </main>
     );
 }

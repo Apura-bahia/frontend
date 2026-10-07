@@ -11,7 +11,7 @@ import { navigationItems } from "../config/navigation";
 import Dashboard from "../pages/dashboard/Dashboard";
 import { AuthController, AuthSessionError } from "../controllers/AuthController";
 import Noticia from "../pages/noticia/Noticia";
-import CarregamentoGlobal from "../components/carregamento global/CarregamentoGlobal";
+
 
 const articlesLoader = ({ request }: { request: Request }) => {
     return PostagemController.getPostagens(request?.signal);
@@ -48,7 +48,6 @@ const router = createBrowserRouter(
             path: "/",
             element: <App />,
             errorElement: <RouteError />,
-            HydrateFallback: CarregamentoGlobal,
             children: [
                 { index: true, element: <Home />, loader: articlesLoader },
                 { path: "busca", element: <SearchPage />, loader: articlesLoader },
