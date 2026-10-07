@@ -7,7 +7,6 @@ import Parceria from "../../components/parceria/Parceria";
 const Home = () => {
     const postagens = useLoaderData() as Article[] | null | undefined;
 
-    // Proteção em caso de erro na API
     if (!postagens || !Array.isArray(postagens)) {
         return (
             <main>
@@ -22,7 +21,6 @@ const Home = () => {
         );
     }
     
-    // Filtros inteligentes para separar as categorias
     const getArticlesByCategory = (category: string) => 
         postagens.filter(a => 
             a.categoria?.toUpperCase() === category || 
@@ -48,7 +46,6 @@ const Home = () => {
                     temaEscuro={false}
                     linkCategoria="/ultimasNoticias"
                 />
-
                 
 
                 <Parceria/>
@@ -93,9 +90,6 @@ const Home = () => {
                     linkCategoria="/geral"
                 />       
 
-                {/* ==========================================
-                    CATEGORIAS COM TEMA CLARO
-                ========================================== */}
                 <Editorial 
                     articles={artigosPolitica} 
                     tituloSecao="Política" 

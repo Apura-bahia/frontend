@@ -51,8 +51,6 @@ const Noticia = () => {
 
     const titulo = (noticiaBruta as any)?.titulo || (noticiaBruta as any)?.title || "Notícia não encontrada";
     
-    // NOVA SEPARAÇÃO INTELIGENTE: Categoria (para o breadcrumb) vs Chapéu (para o destaque)
-    // Tenta ler .categoria.nome caso o backend envie um objeto, ou apenas a string
     const categoriaPrincipal = (noticiaBruta as any)?.categoria?.nome || (noticiaBruta as any)?.categoria || (noticiaBruta as any)?.category || "Política";
     const chapeu = (noticiaBruta as any)?.chapeu || (noticiaBruta as any)?.hat || categoriaPrincipal;
     
@@ -120,13 +118,7 @@ const Noticia = () => {
                 </div>
 
                 <aside className={styles.article__sidebar}>
-                    <div style={{ padding: '1.5rem', border: '1px solid #eaeaea', borderRadius: '4px' }}>
-                        <h3 style={{ fontSize: '1rem', marginBottom: '1rem', color: '#0056b3' }}>Newsletter</h3>
-                        <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '1rem' }}>Receba as principais notícias do dia no seu e-mail.</p>
-                        <input type="email" placeholder="O seu melhor e-mail" style={{ width: '100%', padding: '0.75rem', marginBottom: '1rem', border: '1px solid #ccc', borderRadius: '4px' }} />
-                        <button style={{ width: '100%', padding: '0.75rem', background: '#0056b3', color: '#fff', border: 'none', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>Cadastrar</button>
-                    </div>
-
+                    
                     {ultimasNoticias.length > 0 && (
                         <div className={styles.sidebar__latest}>
                             <h3 className={styles.sidebar__latest__title}>Últimas Notícias</h3>
