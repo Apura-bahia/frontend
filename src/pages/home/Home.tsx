@@ -13,7 +13,6 @@ const Home = () => {
         return (
             <main>
                 <section className={`${styles.home__section} ${styles.page}`}>
-                    {/* Simulamos o layout da Home com 3 blocos de esqueletos e a Parceria no meio */}
                     <EditorialSkeleton />
                     <EditorialSkeleton />
                     <EditorialSkeleton />
